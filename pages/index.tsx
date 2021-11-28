@@ -4,14 +4,14 @@ import axios from "axios";
 // component
 import { CheckBoxList } from 'src/components/organisms/CheckBoxList';
 import { Graph } from 'src/components/organisms/Graph';
+import { Title } from 'src/components/atoms/Title';
 // type
 import { AxiosType, PrefData, PrefPopulationData, ReturnPopulationData } from 'src/types';
-import { Title } from 'src/components/atoms/Title';
-type Styling = {}
 type Props = {
   className?: string
 }
-const FCIndex: React.FC<Props & Styling> = ({ className }) => {
+
+const FCIndex: React.FC<Props> = ({ className }) => {
   const [prefData, setPrefData] = useState<PrefData[]>();
   const [masterPrefPopulationData, setMasterPrefPopulationData] = useState<PrefPopulationData[]>([]);
   const [prefPopulationData, setPrefPopulationData] = useState<PrefPopulationData[]>([]);
