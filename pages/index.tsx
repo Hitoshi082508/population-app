@@ -81,6 +81,10 @@ const FCIndex: React.FC<Props & Styling> = ({ className }) => {
 }
 
 export const Index = styled(FCIndex)`
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `
 
 export default Index;
