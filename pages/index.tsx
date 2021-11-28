@@ -37,7 +37,7 @@ const FCIndex: React.FC<Props> = ({ className }) => {
           const masterData = masterPrefPopulationData.filter((value) => {
             return value.name === prefName;
           });
-          setPrefPopulationData([...prefPopulationData, {data: masterData[0].data, name: masterData[0].name}]);
+          setPrefPopulationData([...prefPopulationData, {type: 'line', data: masterData[0].data, name: masterData[0].name}]);
         } else {
           const res = await axios
           .get <ReturnPopulationData>(
@@ -51,6 +51,7 @@ const FCIndex: React.FC<Props> = ({ className }) => {
           setMasterPrefPopulationData([
             ...prefPopulationData,
             {
+              type: 'line',
               data: prefPopulation.result.data[0].data.map((item) => item.value),
               name: prefName
             }
@@ -58,6 +59,7 @@ const FCIndex: React.FC<Props> = ({ className }) => {
           setPrefPopulationData([
             ...prefPopulationData,
             {
+              type: 'line',
               data: prefPopulation.result.data[0].data.map((item) => item.value),
               name: prefName
             }

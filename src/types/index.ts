@@ -23,6 +23,7 @@ export type ReturnPopulationData = {
 }
 
 export type PrefPopulationData = {
+  type: 'line';
   data: number[];
   name: string;
 }
