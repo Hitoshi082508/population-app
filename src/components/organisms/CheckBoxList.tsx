@@ -8,16 +8,18 @@ import { PrefData } from 'src/types';
 type Props = {
   className?: string;
   prefData: PrefData[];
+  onChange: (prefName: string, prefCode: number, checked: boolean) => void;
 }
 export const FCCheckBoxList: React.FC<Props> = ({
   className,
-  prefData
+  prefData,
+  onChange
 }) => {
   return (
     <div className={className}>
       {prefData?.map((prefData, index) => {
         return (
-          <CheckBox prefData={prefData} key={index} />
+          <CheckBox prefData={prefData} key={index} onChange={onChange}/>
         );
       })}
     </div>
