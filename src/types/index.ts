@@ -7,3 +7,22 @@ export type PrefData = {
 export type AxiosType = AxiosResponse & {
   result: PrefData[]
 }
+
+export type ReturnPopulationData = {
+  message: null,
+  result: {
+    boundaryYear: number;
+    data: {
+      label: string;
+      data: {
+        year: number;
+        value: number;
+      }[]
+    }[]
+  }
+}
+
+export type PrefPopulationData = {
+  data: number[];
+  name: string;
+}

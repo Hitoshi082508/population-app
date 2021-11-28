@@ -3,14 +3,17 @@ import styled from 'styled-components'
 import axios from "axios";
 // component
 import { CheckBoxList } from 'src/components/organisms/CheckBoxList';
+import { Graph } from 'src/components/organisms/Graph';
 // type
-import { AxiosType, PrefData } from 'src/types';
+import { AxiosType, PrefData, PrefPopulationData, ReturnPopulationData } from 'src/types';
 type Styling = {}
 type Props = {
   className?: string
 }
 const FCIndex: React.FC<Props & Styling> = ({ className }) => {
   const [prefData, setPrefData] = useState<PrefData[]>();
+  const [masterPrefPopulationData, setMasterPrefPopulationData] = useState<PrefPopulationData[]>([]);
+  const [prefPopulationData, setPrefPopulationData] = useState<PrefPopulationData[]>([]);
   useEffect(() => {
     axios
       .get <AxiosType>("https://opendata.resas-portal.go.jp/api/v1/prefectures", {
@@ -24,9 +27,55 @@ const FCIndex: React.FC<Props & Styling> = ({ className }) => {
         alert(error);
       });
   }, []);
+
+  const handleClick = async(prefName: string, prefCode: number, checked: boolean) => {
+    if (checked) {
+      try {
+        if (masterPrefPopulationData.map((item) => item.name).includes(prefName)) {
+          const masterData = masterPrefPopulationData.filter((value) => {
+            return value.name === prefName;
+          });
+          setPrefPopulationData([...prefPopulationData, {data: masterData[0].data, name: masterData[0].name}]);
+        } else {
+          const res = await axios
+          .get <ReturnPopulationData>(
+            "https://opendata.resas-portal.go.jp/api/v1/population/composition/perYear?cityCode=-&prefCode=" +
+            prefCode,
+            {
+              headers: { "X-API-KEY": process.env.NEXT_PUBLIC_RESAS_API_KEY },
+            }
+          )
+          const prefPopulation = res.data;
+          setMasterPrefPopulationData([
+            ...prefPopulationData,
+            {
+              data: prefPopulation.result.data[0].data.map((item) => item.value),
+              name: prefName
+            }
+          ]);
+          setPrefPopulationData([
+            ...prefPopulationData,
+            {
+              data: prefPopulation.result.data[0].data.map((item) => item.value),
+              name: prefName
+            }
+          ]);
+        }
+      } catch (error) {
+        alert(error);
+      }
+    } else {
+      const deletePrefPopulation = prefPopulationData.filter((value) => {
+        return value.name !== prefName;
+      })
+      setPrefPopulationData(deletePrefPopulation);
+    }
+  }
+
   return (
     <div className={className}>
-      <CheckBoxList prefData={prefData} />
+      <CheckBoxList prefData={prefData} onChange={handleClick} />
+      <Graph data={prefPopulationData} />
     </div>
   );
 }
