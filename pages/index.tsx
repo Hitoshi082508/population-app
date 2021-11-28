@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import axios from "axios";
+import Head from 'next/head';
 // component
 import { CheckBoxList } from 'src/components/organisms/CheckBoxList';
 import { Graph } from 'src/components/organisms/Graph';
@@ -74,11 +75,16 @@ const FCIndex: React.FC<Props> = ({ className }) => {
   }
 
   return (
-    <div className={className}>
-      <Title text="都道府県別 総人口推移グラフ" />
-      <CheckBoxList prefData={prefData} onChange={handleClick} />
-      <Graph data={prefPopulationData} />
-    </div>
+    <>
+      <Head>
+        <title>総人口推移グラフ</title>
+      </Head>
+      <div className={className}>
+        <Title text="都道府県別 総人口推移グラフ" />
+        <CheckBoxList prefData={prefData} onChange={handleClick} />
+        <Graph data={prefPopulationData} />
+      </div>
+    </>
   );
 }
 
