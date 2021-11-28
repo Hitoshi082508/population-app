@@ -1,34 +1,36 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Name（人口推移アプリ）
 
-## Getting Started
+それぞれの都道府県の人口推移をグラフで見ることができます。
 
-First, run the development server:
+# Image
+
+<img width="1440" alt="スクリーンショット 2021-10-29 18 05 09" src="https://user-images.githubusercontent.com/61718575/139408251-8fb8051d-f063-4b8e-97d1-8c5ab52d9928.png">
+
+# Requirement
+
+* axios: ^0.22.0
+* highcharts: ^9.2.2
+* highcharts-react-official: ^3.0.0
+* RESAS API: https://opendata.resas-portal.go.jp/
+
+# Usage
 
 ```bash
-npm run dev
-# or
-yarn dev
+yarn パッケージをインストール
+
+.env.localを.env.exampleを見ながら作成
+APIキーは以下のURLからユーザー登録をすることによって取得することが可能です。
+https://opendata.resas-portal.go.jp/
+
+yarn dev アプリを起動
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# Demo
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+https://population-app-1der55sjn-hitoshi082508.vercel.app/
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+# Author
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+* 中澤仁志
+* 日本大学経済学部産業経営学科
+* hitoshi082508@gmail.com
