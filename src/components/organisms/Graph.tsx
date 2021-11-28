@@ -2,10 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
+// type
+import { PrefPopulationData } from 'src/types';
 
 type Props = {
   className?: string
-  data: any;
+  data: PrefPopulationData[];
 }
 export const FCGraph: React.FC<Props> = ({ className, data }) => {
   const options: Highcharts.Options = {
@@ -45,7 +47,7 @@ export const FCGraph: React.FC<Props> = ({ className, data }) => {
         text: "人口",
       },
     },
-    series: data.length === 0 ? [{ type: "line", name: "都道府県名", data: [] }] : data,
+    series: data.length === 0 ? [{ type: "line", name: "都道府県名だよ", data: [] }] : data,
   };
 
   return (
