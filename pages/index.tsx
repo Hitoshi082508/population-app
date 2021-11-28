@@ -6,6 +6,7 @@ import { CheckBoxList } from 'src/components/organisms/CheckBoxList';
 import { Graph } from 'src/components/organisms/Graph';
 // type
 import { AxiosType, PrefData, PrefPopulationData, ReturnPopulationData } from 'src/types';
+import { Title } from 'src/components/atoms/Title';
 type Styling = {}
 type Props = {
   className?: string
@@ -74,6 +75,7 @@ const FCIndex: React.FC<Props & Styling> = ({ className }) => {
 
   return (
     <div className={className}>
+      <Title text="都道府県別 総人口推移グラフ" />
       <CheckBoxList prefData={prefData} onChange={handleClick} />
       <Graph data={prefPopulationData} />
     </div>
