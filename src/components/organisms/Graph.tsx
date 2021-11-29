@@ -1,25 +1,25 @@
 import React from 'react';
 import styled from 'styled-components';
-import Highcharts from "highcharts";
-import HighchartsReact from "highcharts-react-official";
+import Highcharts from 'highcharts';
+import HighchartsReact from 'highcharts-react-official';
 // type
 import { PrefPopulationData } from 'src/types';
 
 type Props = {
-  className?: string
+  className?: string;
   data: PrefPopulationData[];
-}
+};
 export const FCGraph: React.FC<Props> = ({ className, data }) => {
   const options: Highcharts.Options = {
     chart: {
-      type: 'line'
+      type: 'line',
     },
     title: {
-      text: "各都道府県の人口",
+      text: '各都道府県の人口',
     },
     xAxis: {
       title: {
-        text: "年度",
+        text: '年度',
       },
       categories: [
         '1960年',
@@ -44,7 +44,7 @@ export const FCGraph: React.FC<Props> = ({ className, data }) => {
     },
     yAxis: {
       title: {
-        text: "人口",
+        text: '人口',
       },
     },
     series: data.length === 0 ? [{ type: "line", name: "都道府県名", data: [] }] : data,
@@ -54,6 +54,6 @@ export const FCGraph: React.FC<Props> = ({ className, data }) => {
     <div className={className}>
       <HighchartsReact highcharts={Highcharts} options={options} />
     </div>
-  )
-}
-export const Graph = styled(FCGraph)``
+  );
+};
+export const Graph = styled(FCGraph)``;
