@@ -22,11 +22,13 @@ export const FCCheckBox: React.FC<Props> = ({ className, prefData, onChange }) =
   );
 };
 export const CheckBox = styled(FCCheckBox)`
+  width: 6em;
   margin: 5px;
-  background-color: #F2F3F6;
   cursor: pointer;
+  ${({ theme }) => theme.media.sp`
+    width: 30%;
+  `}
   label {
-    color: #333;
     cursor: pointer;
   }
   input {
