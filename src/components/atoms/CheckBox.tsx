@@ -12,15 +12,24 @@ type Props = {
 export const FCCheckBox: React.FC<Props> = ({ className, prefData, onChange }) => {
   return (
     <div className={className}>
-      <label htmlFor={prefData.prefName}>{prefData.prefName}</label>
       <input
         type='checkbox'
         onChange={(e) => onChange(prefData.prefName, prefData.prefCode, e.target.checked)}
         id={prefData.prefName}
       />
+      <label htmlFor={prefData.prefName}>{prefData.prefName}</label>
     </div>
   );
 };
 export const CheckBox = styled(FCCheckBox)`
-  margin-right: 10px;
-`;
+  margin: 5px;
+  background-color: #F2F3F6;
+  cursor: pointer;
+  label {
+    color: #333;
+    cursor: pointer;
+  }
+  input {
+    cursor: pointer;
+  }
+`
