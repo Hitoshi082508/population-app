@@ -47,7 +47,7 @@ export const FCGraph: React.FC<Props> = ({ className, data }) => {
         text: "人口",
       },
     },
-    series: data.length === 0 ? [{ type: "line", name: "都道府県名だよ", data: [] }] : data,
+    series: data.length === 0 ? [{ type: "line", name: "都道府県名", data: [] }] : data,
   };
 
   return (
