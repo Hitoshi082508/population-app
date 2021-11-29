@@ -30,4 +30,5 @@ export const CheckBoxList = styled(FCCheckBoxList)`
   flex-direction: row;
   flex-wrap: wrap;
   padding: 10px;
+  margin-bottom: 50px;
 `
